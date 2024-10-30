@@ -7,7 +7,12 @@
     --clr-dark-grey: rgba(217, 217, 217, 1);
     --clr-double-green: rgba(1, 171, 8, 1);
     --clr-red: rgba(255, 122, 122, 1);
-
+    --clr-green-earth: #D4D69F;
+    --clr-dark-beige: #C5B1006E;
+    --clr-dark-goldenrod: #C58800;
+    --clr-pale-chestnut: #DBADAD;
+    --clr-racing-red: #C50C006E;
+    --clr-next-red: #C50000;
 }
 
 /* Box sizing rules */
@@ -246,4 +251,32 @@ a {
     gap: 1.2rem;
     font-weight: 400;
     font-size: 1.2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.green-earth {
+    background-color: var(--clr-green-earth);
+}
+
+.pale {
+    background-color: var(--clr-pale-chestnut);
+}
+
+.dark-beige {
+    background-color: var(--clr-dark-beige);
+}
+
+.dark-goldenrod {
+    color: var(--clr-dark-goldenrod);
+}
+
+.racing-red {
+    background-color: var(--clr-racing-red);
+}
+
+.next-red {
+    color: var(--clr-next-red)
 }

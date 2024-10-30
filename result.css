@@ -1,0 +1,247 @@
+:root {
+    --clr-green: #35BD3A;
+    --clr-dark-green: #009006;
+    --clr-red: #FF7A7A;
+    --clr-dark-red: #EB4545;
+    --clr-grey: #535353;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    /* height: 100svh; */
+    line-height: 1.5;
+    font-family: "Poppins", serif;
+    background-color: var(--clr-light-green)
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+    text-wrap: balance;
+    margin: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+    min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+h1,
+.quote {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2;
+}
+
+.container {
+    max-width: 1020px;
+    margin: 2rem auto;
+    /* border: 1px solid rebeccapurple; */
+    display: grid;
+    gap: 8rem;
+    place-content: center;
+    text-align: center;
+    /* min-height: calc(100svh - 50px); */
+
+}
+
+.logo {
+    justify-self: center;
+}
+
+.result-bar {
+    width: 588px;
+    height: 104px;
+    border-radius: 10px;
+    position: relative;
+    justify-self: center;
+}
+
+.right-attempt {
+    position: absolute;
+    width: 70%;
+    inset: 0;
+    background-color: var(--clr-green);
+    border-radius: inherit;
+}
+
+.right-attempt::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    aspect-ratio: 1/1.1;
+    left: -44px;
+    top: 52px;
+    border-left: 2.81px solid var(--clr-dark-green);
+    border-top: 2.81px solid var(--clr-dark-green);
+}
+
+.right-attempt::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    aspect-ratio: 1;
+    background-color: var(--clr-dark-green);
+    left: 12px;
+    top: 46px;
+    border-radius: 50%;
+}
+
+.wrong-attempt {
+    position: absolute;
+    inset: 0;
+    background-color: var(--clr-red);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.wrong-attempt::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    aspect-ratio: 1;
+    right: -44px;
+    top: 52px;
+    border-right: 2px solid var(--clr-dark-red);
+    border-top: 2px solid var(--clr-dark-red);
+}
+
+.wrong-attempt::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    aspect-ratio: 1;
+    background-color: var(--clr-dark-red);
+    right: 12px;
+    top: 46px;
+    border-radius: 50%;
+}
+
+.btn-container {
+    padding-right: 6px;
+    padding-bottom: 5px;
+    position: relative;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.retry-btn {
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: rgba(53, 189, 58, 1);
+    border-radius: inherit;
+    color: white;
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    border: none;
+    font-size: 1.4rem;
+}
+
+.btn-container::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(1, 171, 8, 1);
+    inset: 0;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.social p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2;
+    color: var(--clr-grey);
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
