@@ -10,23 +10,23 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- <script src="script.js"></script> -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <main>
         <div class="start-container">
-            <img src="./images/Group 4.png" alt="" srcset="">
+            <img src="/assets/images/Group 4.png" alt="" srcset="">
             <div class="btn-container">
-                <button type="button" class="start-btn"> <a href="questions.html"> Start Now &gt;&gt;&gt; </a></button>
+                <button type="button" class="start-btn"> Start Now &gt;&gt;&gt; </button>
             </div>
         </div>
     </main>
     <script>
         const startBtn = document.querySelector(".start-btn");
         startBtn.addEventListener('click', () => {
-            window.location.replace(`${window.location.origin}/questions.html`);
+            console.log(window.location.origin);
+            window.location.replace(`${window.location.origin}/pages/questions.html`);
         })
     </script>
 </body>

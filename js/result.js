@@ -14,7 +14,5 @@ wrong.innerText = `${100 - attemptQuestionPer}%`;
 rightAttempt.style.width = `${attemptQuestionPer}%`;
 
 retryBtn.addEventListener('click', () => {
-    window.location.replace(`${window.location.origin}/questions.html?retry=true`);
+    window.location.replace(`${window.location.origin}/pages/questions.html?retry=true`);
 })
-
-console.log(window.location)

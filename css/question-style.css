@@ -280,3 +280,25 @@ a {
 .next-red {
     color: var(--clr-next-red)
 }
+
+/* audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-current-time-display,
+
+audio::-webkit-media-controls-mute-button {
+    display: none !important;
+}
+
+audio::-webkit-media-controls-volume-slider-container,
+audio::-webkit-media-controls-volume-slider {
+    display: none !important;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: transparent;
+} */
+
+.soundbar {
+    cursor: pointer;
+}
