@@ -1,0 +1,15 @@
+{
+  "name": "quizapp",
+  "version": "1.0.0",
+  "description": "quiz app for frontend developer",
+  "scripts": {
+    "start": "parcel ./pages/*.html index.html",
+    "build": "parcel build ./pages/*.html index.html --dist-dir public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sumit Sahu",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}

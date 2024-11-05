@@ -16,7 +16,7 @@
 <body>
     <main>
         <div class="start-container">
-            <img src="/assets/images/Group 4.png" alt="" srcset="">
+            <img src="/assets/images/Group 4.png" alt="logo">
             <div class="btn-container">
                 <button type="button" class="start-btn"> Start Now &gt;&gt;&gt; </button>
             </div>
@@ -27,6 +27,7 @@
         startBtn.addEventListener('click', () => {
             console.log(window.location.origin);
             window.location.replace(`${window.location.origin}/pages/questions.html`);
+            // window.location.reload();
         })
     </script>
 </body>

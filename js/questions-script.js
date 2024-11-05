@@ -1,7 +1,13 @@
 import quizData from './data.js';
 
+// using import as parcel will require all the images at the bundling time
+import correctSVG from '../assets/images/correct.svg';
+import wrongSVG from '../assets/images/wrong.svg';
+import volumeICON from '../assets/images/volume-icon.svg';
+import muteICON from '../assets/images/mute.svg';
+
 let timerId = setInterval(countdown, 1000);
-let questionTimerId;
+let questionTimerId, result = [];
 const questionCard = document.querySelector('.question-card');
 const optionSpans = document.querySelectorAll('.option span');
 const answers = document.querySelectorAll('.answer');
@@ -42,6 +48,7 @@ function hasOneDigit(n) {
     return n >= -9 && n <= 9
 }
 
+
 function countdown() {
     if (timeLeft == -1) {
         clearTimeout(timerId);
@@ -73,23 +80,32 @@ i = ++currentQuestionIndex;
 
 iteration = Object.values(currentQuizData);
 
+
 answers.forEach(answer => {
     answer.addEventListener('click', e => {
         currentQ = Object.assign(...currentQuestion.map(key => key))
         if (Object.values(iteration[i - 1])[5] === e.currentTarget.id) {
             correctSoundPlayer.play();
-            ++correctAnswerCount;
-            localStorage.setItem('correctAnswerCount', JSON.stringify(correctAnswerCount));
+            result = JSON.parse(localStorage.getItem('result')) || result;
+            if (!result[i - 1]) {
+                result[i - 1] = true;
+                localStorage.setItem('result', JSON.stringify(result));
+            }
             e.currentTarget.classList.add('correct');
-            e.currentTarget.children[1].children[1].setAttribute('src', '../assets/images/correct.svg');
+            // e.currentTarget.children[1].children[0].insertAdjacentElement('afterend', createImgtag(correctSVG));
+            e.currentTarget.children[1].children[1].setAttribute('src', correctSVG);
         } else {
             e.currentTarget.classList.add('wrong');
             wrongSoundPlayer.play();
             let wrongAnswer = document.getElementById(`${Object.values(iteration[i - 1])[5]}`);
             wrongAnswer.classList.add('correct');
-            wrongAnswer.children[1].children[1].setAttribute('src', '../assets/images/correct.svg');
+
+            // wrongAnswer.children[1].children[0].insertAdjacentElement('afterend', createImgtag(correctSVG));
+            wrongAnswer.children[1].children[1].setAttribute('src', correctSVG);
             e.currentTarget.children[1].children[0].innerText = 'You chose';
-            e.currentTarget.children[1].children[1].setAttribute('src', '../assets/images/wrong.svg');
+
+            // e.currentTarget.children[1].children[0].insertAdjacentElement('afterend', createImgtag(wrongSVG));
+            e.currentTarget.children[1].children[1].setAttribute('src', wrongSVG);
         }
     })
 })
@@ -109,11 +125,16 @@ function iterateQuestion() {
             let optionElement = optionSpans[j - 1].parentElement.parentElement;
             optionElement.classList.remove('wrong', 'correct');
             optionElement.children[1].children[0].innerText = '';
+            // if (optionElement.children[1].children[1]) {
+            //     optionElement.children[1].children[1].remove();
+            // }
             optionElement.children[1].children[1].setAttribute('src', '')
         }
         questionCard.innerText = Object.values(iteration[i])[0];
         i++;
     } else {
+        correctAnswerCount = result.filter(ele => ele).length;
+        localStorage.removeItem('result');
         window.location.replace(`${window.location.origin}/pages/result.html?result=${correctAnswerCount}`);
         clearInterval(timerId);
         clearInterval(questionTimerId);
@@ -143,13 +164,21 @@ next.addEventListener('click', (e) => {
 soundbar.addEventListener('click', () => {
     if (audioPlayer.paused) {
         audioPlayer.play();
-        soundIcon.setAttribute('src', '../assets/images/volume-icon.svg')
+        soundIcon.setAttribute('src', volumeICON)
     } else {
         audioPlayer.pause();
-        soundIcon.setAttribute('src', '../assets/images/mute.svg')
+        soundIcon.setAttribute('src', muteICON)
     }
 })
 
 audioPlayer.addEventListener('ended', () => {
     audioPlayer.play();
 }, false);
+
+// no need to use this function as empty svg image works but for production we might be using this. 
+function createImgtag(assetUrl) {
+    let img = document.createElement('img');
+    // imgSource = require('../assets/images/correct.svg') ? require('../assets/images/correct.svg') : '../assets/images/correct.svg'; only when using both live server and parcel
+    img.setAttribute('src', assetUrl);
+    return img;
+}
